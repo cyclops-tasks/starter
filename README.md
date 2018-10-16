@@ -2,9 +2,11 @@
 
 Task to start new projects.
 
-![starter](https://i.gifer.com/1yrv.gif)
+![starter](https://i.gifer.com/MbEe.gif)
 
 ```bash
+mkdir new-project && cd new-project
+npm init
 npm install --save starter-tasks
-starter-tasks
+npx starter-tasks
 ```
