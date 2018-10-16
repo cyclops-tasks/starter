@@ -2,7 +2,7 @@
 
 Task to start new projects.
 
-![starter](https://i.gifer.com/MbEe.gif)
+![ignition](https://vignette.wikia.nocookie.net/smuff/images/c/ce/Space_shuttle_launch.gif/revision/latest?cb=20130807150308)
 
 ```bash
 mkdir new-project && cd new-project
