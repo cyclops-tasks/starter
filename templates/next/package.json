@@ -1,0 +1,60 @@
+{
+  "scripts": {
+    "analyze": "ANALYZE=1 next build",
+    "build": "rimraf dist; next build",
+    "export": "next export",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "4.16.4",
+    "next": "7.0.2",
+    "next-routes": "1.4.2",
+    "react": "16.5.2",
+    "react-dom": "16.5.2"
+  },
+  "devDependencies": {
+    "rimraf": "2.6.2",
+    "webpack-bundle-analyzer": "3.0.2"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "next/babel",
+            {
+              "preset-env": {
+                "targets": {
+                  "browsers": [
+                    "> 0.5%",
+                    "last 2 versions",
+                    "Firefox ESR",
+                    "not dead"
+                  ]
+                },
+                "modules": "commonjs"
+              }
+            }
+          ]
+        ]
+      }
+    },
+    "presets": [
+      [
+        "next/babel",
+        {
+          "preset-env": {
+            "targets": {
+              "browsers": [
+                "> 0.5%",
+                "last 2 versions",
+                "Firefox ESR",
+                "not dead"
+              ]
+            }
+          }
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "babel-core": "6.26.3",
+    "jest": "23.6.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ],
+    "testMatch": [
+      "<rootDir>/test/**/*Test.js"
+    ]
+  }
+}

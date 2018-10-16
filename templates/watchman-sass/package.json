@@ -1,0 +1,22 @@
+{
+  "watchman": {
+    "triggers": [
+      {
+        "name": "sass",
+        "expression": [
+          "anyof",
+          [
+            "match",
+            "lib/**/*.scss",
+            "wholename"
+          ]
+        ],
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ]
+      }
+    ]
+  }
+}

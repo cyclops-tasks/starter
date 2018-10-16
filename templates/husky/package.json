@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "husky": "1.1.2",
+    "lint-staged": "7.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm test"
+    }
+  },
+  "lint-staged": {
+    "*.{css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --ignore-path .gitignore --fix",
+      "git add"
+    ]
+  }
+}

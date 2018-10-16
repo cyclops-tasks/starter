@@ -1,0 +1,11 @@
+{
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel lib --out-dir dist --source-maps",
+    "prepublishOnly": "rimraf dist; npm run build",
+    "watch": "rimraf dist; babel lib --watch --out-dir dist --source-maps"
+  },
+  "devDependencies": {
+    "rimraf": "2.6.2"
+  }
+}

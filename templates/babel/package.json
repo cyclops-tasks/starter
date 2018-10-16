@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@babel/runtime": "7.1.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.1.2",
+    "@babel/core": "7.1.2",
+    "@babel/preset-env": "7.1.0"
+  }
+}

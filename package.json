@@ -1,0 +1,235 @@
+{
+  "name": "starter-tasks",
+  "starters": [
+    "basics",
+    "babel",
+    "babel-node",
+    "babel-scripts",
+    "eslint",
+    "husky",
+    "jest",
+    "jest-node",
+    "jest-scripts",
+    "watchman-babel"
+  ],
+  "version": "0.1.0",
+  "description": "Task to start new projects",
+  "keywords": [
+    "cyclops",
+    "starter",
+    "tasks"
+  ],
+  "author": "cyclops <oss@cyclo.ps>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/cyclops-tasks/starter.git"
+  },
+  "main": "dist/starter.js",
+  "bin": {
+    "pkg-tasks": "./bin/starter-tasks"
+  },
+  "links": {
+    "@dot-store/fs": "../dot-store-fs",
+    "@dot-store/glob": "../dot-store-glob",
+    "dot-event": "../../dot-event",
+    "dot-store": "../../dot-store-core"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/cyclops-tasks/starter#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.0.0",
+    "@dot-store/fs": "^1.1.0",
+    "@dot-store/glob": "^2.1.0",
+    "deepmerge": "^2.2.1",
+    "dot-event": "^2.4.0",
+    "dot-store": "^5.3.0",
+    "inquirer": "^6.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.6.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
+    "husky": "1.0.0-rc.15",
+    "jest": "^23.6.0",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "6.14"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-transform-runtime",
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "pragma": "h"
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "build": "babel lib --out-dir dist --source-maps",
+    "prepublishOnly": "rimraf dist; npm run build",
+    "watch": "rimraf dist; babel lib --watch --out-dir dist --source-maps",
+    "fix": "npm run lint -- --fix",
+    "lint": "eslint --ignore-path .gitignore --ext=js .",
+    "pretty": "prettier --write **/*.css **/*.json **/*.md",
+    "test": "jest"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:prettier/recommended",
+      "plugin:react/recommended"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+      },
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "rules": {
+      "curly": "error",
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 60,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true
+        }
+      ],
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ],
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "h",
+          "varsIgnorePattern": "h"
+        }
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "react/display-name": "off",
+      "react/no-find-dom-node": "off",
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
+      "semi": [
+        "error",
+        "never"
+      ],
+      "sort-keys": [
+        "error",
+        "asc",
+        {
+          "caseSensitive": true,
+          "natural": false
+        }
+      ],
+      "sort-vars": [
+        "error",
+        {
+          "ignoreCase": true
+        }
+      ],
+      "strict": 0
+    }
+  },
+  "prettier": {
+    "printWidth": 60,
+    "semi": false,
+    "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm test"
+    }
+  },
+  "lint-staged": {
+    "*.{css,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --ignore-path .gitignore --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ],
+    "testMatch": [
+      "<rootDir>/test/**/*Test.js"
+    ],
+    "testEnvironment": "node"
+  },
+  "watchman": {
+    "triggers": [
+      {
+        "name": "babel",
+        "expression": [
+          "anyof",
+          [
+            "match",
+            "lib/**/*.js",
+            "wholename"
+          ]
+        ],
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ]
+      }
+    ]
+  }
+}

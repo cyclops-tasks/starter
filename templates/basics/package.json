@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [ "" ],
+  "author": " <>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com//.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com//#readme"
+}

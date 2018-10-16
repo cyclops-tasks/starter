@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "node-sass lib --follow --output dist --source-maps",
+    "prepublishOnly": "rimraf dist; npm run build",
+    "watch": "rimraf dist; node-sass lib -r --follow --watch --output dist --source-maps"
+  },
+  "devDependencies": {
+    "node-sass": "4.9.4"
+  }
+}
