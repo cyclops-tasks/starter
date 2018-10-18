@@ -18,8 +18,9 @@ beforeEach(async () => {
     taskLeader: true,
   })
 
-  const cancelEvent = ({ event }) =>
-    (event.signal.cancel = true)
+  const cancelEvent = ({ event }) => {
+    event.signal.cancel = true
+  }
 
   events.onAny({
     "before.fs.copy": cancelEvent,
@@ -28,10 +29,7 @@ beforeEach(async () => {
 })
 
 async function run(option = "basics") {
-  await store.set("argv", {
-    _: ["starter"],
-    [option]: true,
-  })
+  await store.set("argv", { _: [], [option]: true })
 
   await Promise.all([
     events.emit("startTask", { taskId: "fixture" }),
