@@ -1,6 +1,5 @@
 {
   "devDependencies": {
-    "babel-core": "6.26.3",
     "jest": "23.6.0"
   },
   "jest": {
