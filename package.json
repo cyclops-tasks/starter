@@ -12,7 +12,7 @@
     "jest-scripts",
     "watchman-babel"
   ],
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Task to start new projects",
   "keywords": [
     "cyclops",
