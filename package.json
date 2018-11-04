@@ -1,17 +1,5 @@
 {
   "name": "starter-tasks",
-  "starters": [
-    "basics",
-    "babel",
-    "babel-node",
-    "babel-scripts",
-    "eslint",
-    "husky",
-    "jest",
-    "jest-node",
-    "jest-scripts",
-    "watchman-babel"
-  ],
   "version": "1.0.0",
   "description": "Task to start new projects",
   "keywords": [
@@ -25,8 +13,13 @@
     "url": "git+ssh://git@github.com/cyclops-tasks/starter.git"
   },
   "main": "dist/starter.js",
+  "license": "MIT",
+  "homepage": "https://github.com/cyclops-tasks/starter#readme",
   "bin": {
     "starter-tasks": "./bin/starter-tasks"
+  },
+  "cyclops": {
+    "version-tasks": {}
   },
   "links": {
     "@dot-store/fs": "../dot-store-fs",
@@ -35,8 +28,18 @@
     "dot-event": "../../dot-event",
     "dot-store": "../../dot-store-core"
   },
-  "license": "MIT",
-  "homepage": "https://github.com/cyclops-tasks/starter#readme",
+  "starters": [
+    "basics",
+    "babel",
+    "babel-node",
+    "babel-scripts",
+    "eslint",
+    "husky",
+    "jest",
+    "jest-node",
+    "jest-scripts",
+    "watchman-babel"
+  ],
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@dot-store/fs": "^1.4.0",
