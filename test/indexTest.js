@@ -10,9 +10,13 @@ beforeEach(async () => {
 
   starter({ events, store })
 
+  const projectPkgPath = `${__dirname}/fixture/package.json`
+
+  await store.set("packagePaths", [projectPkgPath])
+
   await store.set("tasks.fixture", {
     projectPath: `${__dirname}/fixture`,
-    projectPkgPath: `${__dirname}/fixture/package.json`,
+    projectPkgPath,
     taskId: "fixture",
     taskIndex: 0,
     taskLeader: true,
@@ -32,6 +36,7 @@ async function run(option = "basics") {
   await store.set("argv", { _: [], [option]: true })
 
   await Promise.all([
+    events.emit("beforeSetTaskPaths"),
     events.emit("startTask", { taskId: "fixture" }),
   ])
 }
@@ -71,7 +76,7 @@ test("starts a new project", async () => {
 
   expect(writes).toEqual([
     {
-      json: { name: "fixture", starters: ["basics"] },
+      json: { name: "fixture", starters: [] },
       options: { spaces: 2 },
       path: `${__dirname}/fixture/package.json`,
     },

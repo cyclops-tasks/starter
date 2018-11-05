@@ -8,5 +8,9 @@
     "url": "git+ssh://git@github.com//.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com//#readme"
+  "homepage": "https://github.com//#readme",
+  "cyclops": {
+    "starter-tasks": {},
+    "version-tasks": {}
+  }
 }

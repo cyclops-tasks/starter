@@ -46,7 +46,7 @@
     "@dot-store/glob": "2.2.0",
     "cyclops": "1.2.0",
     "deepmerge": "2.2.1",
-    "dot-event": "2.7.0",
+    "dot-event": "2.8.0",
     "dot-store": "5.4.0",
     "inquirer": "6.2.0"
   },
