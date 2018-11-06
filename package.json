@@ -19,6 +19,7 @@
     "starter-tasks": "./bin/starter-tasks"
   },
   "cyclops": {
+    "git-tasks": {},
     "version-tasks": {}
   },
   "links": {
