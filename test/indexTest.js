@@ -76,7 +76,14 @@ test("starts a new project", async () => {
 
   expect(writes).toEqual([
     {
-      json: { name: "fixture", starters: [] },
+      json: {
+        cyclops: {
+          "starter-tasks": {},
+          "version-tasks": {},
+        },
+        name: "fixture",
+        starters: [],
+      },
       options: { spaces: 2 },
       path: `${__dirname}/fixture/package.json`,
     },
