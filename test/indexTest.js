@@ -35,9 +35,11 @@ beforeEach(async () => {
 async function run(option = "basics") {
   await store.set("argv", { _: [], [option]: true })
 
+  events.setOp("cyclops")
+
   await Promise.all([
-    events.emit("beforeSetTaskPaths"),
-    events.emit("startTask", { taskId: "fixture" }),
+    events.cyclops("beforeSetTaskPaths"),
+    events.cyclops("startTask", { taskId: "fixture" }),
   ])
 }
 
@@ -82,7 +84,6 @@ test("starts a new project", async () => {
           "version-tasks": {},
         },
         name: "fixture",
-        starters: [],
       },
       options: { spaces: 2 },
       path: `${__dirname}/fixture/package.json`,
