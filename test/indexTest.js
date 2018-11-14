@@ -1,7 +1,8 @@
 import cyclops from "cyclops"
 import dotEvent from "dot-event"
 import dotStore from "dot-store"
-import starter, { templatesPath } from "../dist/starter"
+import starter from "../dist/starter"
+import { templatesPath } from "../dist/starter/merge"
 
 let events, store
 
