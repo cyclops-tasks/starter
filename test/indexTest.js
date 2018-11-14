@@ -13,6 +13,7 @@ function cancelEvent({ event }) {
 beforeEach(async () => {
   events = dotEvent()
   store = dotStore(events)
+
   cyclops({ events, store })
 
   events.onAny({
