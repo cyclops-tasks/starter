@@ -1,30 +1,18 @@
+import cyclops from "cyclops"
 import dotEvent from "dot-event"
 import dotStore from "dot-store"
 import starter, { templatesPath } from "../dist/starter"
 
 let events, store
 
+function cancelEvent({ event }) {
+  event.signal.cancel = true
+}
+
 beforeEach(async () => {
   events = dotEvent()
   store = dotStore(events)
-
-  starter({ events, store })
-
-  const projectPkgPath = `${__dirname}/fixture/package.json`
-
-  await store.set("packagePaths", [projectPkgPath])
-
-  await store.set("tasks.fixture", {
-    projectPath: `${__dirname}/fixture`,
-    projectPkgPath,
-    taskId: "fixture",
-    taskIndex: 0,
-    taskLeader: true,
-  })
-
-  const cancelEvent = ({ event }) => {
-    event.signal.cancel = true
-  }
+  cyclops({ events, store })
 
   events.onAny({
     "before.fs.copy": cancelEvent,
@@ -32,15 +20,13 @@ beforeEach(async () => {
   })
 })
 
-async function run(option = "basics") {
-  await store.set("argv", { _: [], [option]: true })
-
-  events.setOp("cyclops")
-
-  await Promise.all([
-    events.cyclops("beforeSetTaskPaths"),
-    events.cyclops("startTask", { taskId: "fixture" }),
-  ])
+async function run() {
+  await events.cyclops({
+    argv: ["test/fixture"],
+    composer: starter,
+    path: __dirname,
+    task: "starter-tasks",
+  })
 }
 
 test("starts a new project", async () => {
@@ -77,6 +63,11 @@ test("starts a new project", async () => {
   ])
 
   expect(writes).toEqual([
+    {
+      ensure: true,
+      json: { cyclops: { "starter-tasks": {} } },
+      path: `${__dirname}/fixture/package.json`,
+    },
     {
       json: {
         cyclops: {
