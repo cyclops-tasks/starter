@@ -24,7 +24,7 @@ beforeEach(async () => {
 
 async function run() {
   await events.cyclops({
-    argv: ["test/fixture"],
+    argv: ["fixture"],
     composer: starter,
     path: __dirname,
     task: "starter-tasks",
