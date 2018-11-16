@@ -19,10 +19,10 @@
     "starter-tasks": "./bin/starter-tasks"
   },
   "cyclops": {
-    "git-tasks": {},
-    "link-tasks": {},
-    "starter-tasks": {},
-    "version-tasks": {}
+    "git": {},
+    "link": {},
+    "starter": {},
+    "version": {}
   },
   "links": {
     "@dot-store/fs": "../dot-store-fs",
