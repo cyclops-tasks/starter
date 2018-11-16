@@ -1,6 +1,6 @@
 {
   "name": "starter-tasks",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Task to start new projects",
   "keywords": [
     "cyclops",
@@ -46,12 +46,12 @@
   "dependencies": {
     "@babel/runtime": "7.1.2",
     "@dot-store/fs": "1.6.0",
-    "@dot-store/glob": "2.2.0",
-    "@dot-store/log": "0.8.0",
-    "cyclops": "1.3.0",
+    "@dot-store/glob": "2.3.0",
+    "@dot-store/log": "0.9.0",
+    "cyclops": "1.4.0",
     "deepmerge": "2.2.1",
-    "dot-event": "2.8.0",
-    "dot-store": "5.4.0",
+    "dot-event": "2.9.0",
+    "dot-store": "5.5.0",
     "inquirer": "6.2.0"
   },
   "devDependencies": {
