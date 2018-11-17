@@ -13,8 +13,8 @@ beforeEach(async () => {
   cyclops({ events, store })
 
   events.onAny({
-    "before.fs": ({ copy, event, writeJson }) => {
-      if (copy || writeJson) {
+    "before.fs": ({ action, event }) => {
+      if (["copy", "writeJson"].indexOf(action) > -1) {
         event.signal.cancel = true
       }
     },
@@ -34,58 +34,61 @@ test("starts a new project", async () => {
   const copies = []
   const writes = []
 
-  events.onAny(
-    "before.fs",
-    ({ copy, event, writeJson }) => {
-      if (copy) {
-        copies.push(event.args[0])
-      }
-
-      if (writeJson) {
-        writes.push(event.args[0])
-      }
+  events.onAny("before.fs", ({ action, event }) => {
+    if (action === "copy") {
+      copies.push(event.args[0])
     }
-  )
+
+    if (action === "writeJson") {
+      writes.push(event.args[0])
+    }
+  })
 
   await run()
 
   expect(copies).toEqual([
     {
-      copy: true,
+      action: "copy",
       dest: `${__dirname}/fixture/.gitignore`,
       src: `${templatesPath}/basics/gitignore`,
     },
     {
-      copy: true,
+      action: "copy",
       dest: `${__dirname}/fixture/.npmignore`,
       src: `${templatesPath}/basics/npmignore`,
     },
     {
-      copy: true,
+      action: "copy",
       dest: `${__dirname}/fixture/package.json`,
       src: `${templatesPath}/basics/package.json`,
     },
     {
-      copy: true,
+      action: "copy",
       dest: `${__dirname}/fixture/README.md`,
       src: `${templatesPath}/basics/README.md`,
     },
   ])
 
-  expect(writes).toEqual([
-    {
-      json: {
-        cyclops: {
-          git: {},
-          link: {},
-          starter: {},
-          version: {},
-        },
-        name: "fixture",
+  expect(writes[0]).toMatchObject({
+    action: "writeJson",
+    ensure: true,
+    json: { cyclops: { starter: {} } },
+    path: `${__dirname}/fixture/package.json`,
+    spaces: 2,
+  })
+
+  expect(writes[1]).toMatchObject({
+    action: "writeJson",
+    json: {
+      cyclops: {
+        git: {},
+        link: {},
+        starter: {},
+        version: {},
       },
-      options: { spaces: 2 },
-      path: `${__dirname}/fixture/package.json`,
-      writeJson: true,
+      name: "fixture",
     },
-  ])
+    path: `${__dirname}/fixture/package.json`,
+    spaces: 2,
+  })
 })
