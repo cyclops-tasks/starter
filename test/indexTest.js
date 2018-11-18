@@ -1,6 +1,6 @@
-import cyclops from "cyclops"
 import dotEvent from "dot-event"
 import dotStore from "dot-store"
+import dotTask from "dot-task"
 import starter from "../dist/starter"
 import { templatesPath } from "../dist/starter/merge"
 
@@ -10,7 +10,7 @@ beforeEach(async () => {
   events = dotEvent()
   store = dotStore(events)
 
-  cyclops({ events, store })
+  dotTask({ events, store })
 
   events.onAny({
     "before.fs": ({ action, event }) => {
@@ -22,8 +22,8 @@ beforeEach(async () => {
 })
 
 async function run() {
-  await events.cyclops({
-    argv: ["fixture", "--basics"],
+  await events.task({
+    arg: ["fixture", "--basics"],
     composer: starter,
     op: "starter",
     path: __dirname,
@@ -72,7 +72,7 @@ test("starts a new project", async () => {
   expect(writes[0]).toMatchObject({
     action: "writeJson",
     ensure: true,
-    json: { cyclops: { starter: {} } },
+    json: { operations: { starter: {} } },
     path: `${__dirname}/fixture/package.json`,
     spaces: 2,
   })
@@ -80,13 +80,13 @@ test("starts a new project", async () => {
   expect(writes[1]).toMatchObject({
     action: "writeJson",
     json: {
-      cyclops: {
+      name: "fixture",
+      operations: {
         git: {},
         link: {},
         starter: {},
         version: {},
       },
-      name: "fixture",
     },
     path: `${__dirname}/fixture/package.json`,
     spaces: 2,

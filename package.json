@@ -1,35 +1,28 @@
 {
-  "name": "starter-tasks",
+  "name": "dot-starter",
   "version": "1.1.0",
-  "description": "Task to start new projects",
+  "description": "dot-event project starter operation",
   "keywords": [
-    "cyclops",
-    "starter",
-    "tasks"
+    "dot-event",
+    "operation",
+    "starter"
   ],
-  "author": "cyclops <oss@cyclo.ps>",
+  "author": "dot-event <oss@dot-event.io>",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/cyclops-tasks/starter.git"
+    "url": "git+ssh://git@github.com/dot-event/starter.git"
   },
   "main": "dist/starter.js",
   "license": "MIT",
-  "homepage": "https://github.com/cyclops-tasks/starter#readme",
+  "homepage": "https://github.com/dot-event/starter#readme",
   "bin": {
-    "starter-tasks": "./bin/starter-tasks"
+    "dot-starter": "./bin/dot-starter"
   },
-  "cyclops": {
+  "operations": {
     "git": {},
     "link": {},
     "starter": {},
     "version": {}
-  },
-  "links": {
-    "@dot-store/fs": "../dot-store-fs",
-    "@dot-store/glob": "../dot-store-glob",
-    "cyclops": "../cyclops",
-    "dot-event": "../../dot-event",
-    "dot-store": "../../dot-store-core"
   },
   "starters": [
     "basics",
@@ -45,13 +38,13 @@
   ],
   "dependencies": {
     "@babel/runtime": "7.1.2",
-    "@dot-store/fs": "1.6.0",
-    "@dot-store/glob": "2.3.0",
-    "@dot-store/log": "0.9.0",
-    "cyclops": "1.4.0",
     "deepmerge": "2.2.1",
     "dot-event": "2.9.0",
+    "dot-fs-extra": "1.6.0",
+    "dot-glob": "2.4.0",
+    "dot-logger": "0.9.0",
     "dot-store": "5.5.0",
+    "dot-task": "1.5.0",
     "inquirer": "6.2.0"
   },
   "devDependencies": {
