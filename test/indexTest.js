@@ -1,6 +1,6 @@
 import dotEvent from "dot-event"
-import dotStore from "dot-store"
-import dotTask from "dot-task"
+import dotStore from "@dot-event/store"
+import dotTask from "@dot-event/task"
 import starter from "../dist/starter"
 import { templatesPath } from "../dist/starter/merge"
 
@@ -8,7 +8,7 @@ let events, store
 
 beforeEach(async () => {
   events = dotEvent()
-  store = dotStore(events)
+  store = dotStore({ events })
 
   dotTask({ events, store })
 
@@ -23,7 +23,7 @@ beforeEach(async () => {
 
 async function run() {
   await events.task({
-    arg: ["fixture", "--basics"],
+    argv: ["fixture", "--basics"],
     composer: starter,
     op: "starter",
     path: __dirname,
