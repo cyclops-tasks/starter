@@ -1,3 +1,1 @@
-# README
-
-A very descriptive README.
+# project-name

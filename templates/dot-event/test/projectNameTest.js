@@ -2,7 +2,7 @@ import dotEvent from "dot-event"
 import dotStore from "@dot-event/store"
 import dotTask from "@dot-event/task"
 
-import dotProject from "../dist/project"
+import projectName from "../dist/project-name"
 
 let events, store
 
@@ -10,7 +10,7 @@ beforeEach(async () => {
   events = dotEvent()
   store = dotStore({ events })
 
-  dotProject({ events, store })
+  projectName({ events, store })
   dotTask({ events, store })
 
   events.onAny({
@@ -23,19 +23,20 @@ beforeEach(async () => {
 async function run(...argv) {
   await events.task({
     argv,
-    op: "project",
+    op: "projectName",
     path: `${__dirname}/fixture`,
   })
 }
 
-test("project", async () => {
-  const args = []
+test("projectName", async () => {
+  const calls = {}
 
-  events.onAny({
-    "before.spawn": ({ event }) => args.push(event.args[0]),
+  events.onAny("before.fs", ({ action, event }) => {
+    calls[action] = calls[action] || []
+    calls[action].push(event.args[0])
   })
 
   await run()
 
-  expect(args).toEqual([])
+  expect(calls.writeFile).toContainEqual({})
 })

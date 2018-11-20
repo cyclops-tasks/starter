@@ -4,13 +4,13 @@ import dotLog from "@dot-event/log"
 import dotSpawn from "@dot-event/spawn"
 
 // Helpers
-import { dryMode } from "./project/dry"
+import { dryMode } from "./project-name/dry"
 
 // Composer
 export default function(options) {
   const { events, store } = options
 
-  if (events.ops.has("project")) {
+  if (events.ops.has("projectName")) {
     return options
   }
 
@@ -19,10 +19,10 @@ export default function(options) {
   dotSpawn({ events, store })
 
   events.onAny({
-    project: [
+    projectName: [
       dryMode,
       async options => {
-        const { action } = options
+        const { action = "projectName" } = options
 
         if (actions[action]) {
           await actions[action](options)
@@ -30,7 +30,7 @@ export default function(options) {
       },
     ],
 
-    projectSetup: () =>
+    projectNameSetup: () =>
       events.argv("argv", {
         alias: {
           a: ["action"],
@@ -42,4 +42,6 @@ export default function(options) {
   return options
 }
 
-export const actions = {}
+export const actions = {
+  projectName: async () => {},
+}

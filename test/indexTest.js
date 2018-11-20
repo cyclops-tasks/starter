@@ -5,6 +5,8 @@ import dotTask from "@dot-event/task"
 import dotStarter from "../dist/starter"
 import { templatesPath } from "../dist/starter/merge"
 
+const cancelActions = ["copy", "writeFile", "writeJson"]
+
 let events, store
 
 beforeEach(async () => {
@@ -16,7 +18,7 @@ beforeEach(async () => {
 
   events.onAny({
     "before.fs": ({ action, event }) => {
-      if (["copy", "writeJson"].indexOf(action) > -1) {
+      if (cancelActions.indexOf(action) > -1) {
         event.signal.cancel = true
       }
     },
@@ -32,64 +34,42 @@ async function run() {
 }
 
 test("starts a new project", async () => {
-  const copies = []
-  const writes = []
+  const calls = {}
 
   events.onAny("before.fs", ({ action, event }) => {
-    if (action === "copy") {
-      copies.push(event.args[0])
-    }
-
-    if (action === "writeJson") {
-      writes.push(event.args[0])
-    }
+    calls[action] = calls[action] || []
+    calls[action].push(event.args[0])
   })
 
   await run()
 
-  expect(copies).toEqual([
-    {
-      action: "copy",
-      dest: `${__dirname}/fixture/.gitignore`,
-      src: `${templatesPath}/basics/gitignore`,
-    },
-    {
-      action: "copy",
-      dest: `${__dirname}/fixture/.npmignore`,
-      src: `${templatesPath}/basics/npmignore`,
-    },
-    {
-      action: "copy",
-      dest: `${__dirname}/fixture/package.json`,
-      src: `${templatesPath}/basics/package.json`,
-    },
-    {
-      action: "copy",
-      dest: `${__dirname}/fixture/README.md`,
-      src: `${templatesPath}/basics/README.md`,
-    },
-  ])
-
-  expect(writes[0]).toMatchObject({
-    action: "writeJson",
+  expect(calls.writeFile).toContainEqual({
+    action: "writeFile",
+    body: "dist\nnode_modules\n",
     ensure: true,
-    json: { operations: { starter: {} } },
-    path: `${__dirname}/fixture/package.json`,
-    spaces: 2,
+    path: `${__dirname}/fixture/.gitignore`,
   })
 
-  expect(writes[1]).toMatchObject({
-    action: "writeJson",
-    json: {
-      name: "fixture",
-      operations: {
-        git: {},
-        link: {},
-        starter: {},
-        version: {},
-      },
-    },
+  expect(calls.writeFile).toContainEqual({
+    action: "writeFile",
+    body: "lib\ntest\n",
+    ensure: true,
+    path: `${__dirname}/fixture/.npmignore`,
+  })
+
+  expect(calls.writeFile).toContainEqual({
+    action: "writeFile",
+    body:
+      // prettier-ignore
+      "{\n  \"name\": \"fixture\",\n  \"version\": \"0.0.1\",\n  \"description\": \"\",\n  \"keywords\": [\n    \"\"\n  ],\n  \"author\": \" <>\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+ssh://git@github.com//fixture.git\"\n  },\n  \"license\": \"MIT\",\n  \"homepage\": \"https://github.com//fixture#readme\"\n}\n",
+    ensure: true,
     path: `${__dirname}/fixture/package.json`,
-    spaces: 2,
+  })
+
+  expect(calls.writeFile).toContainEqual({
+    action: "writeFile",
+    body: "# fixture\n",
+    ensure: true,
+    path: `${__dirname}/fixture/README.md`,
   })
 })
