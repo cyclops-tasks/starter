@@ -6,5 +6,5 @@ dot-event project starter operation
 
 ```bash
 npm install -g @dot-event/starter
-@dot-event/starter my-new-project-name
+dot-starter my-new-project-name
 ```
