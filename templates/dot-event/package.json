@@ -1,4 +1,17 @@
 {
+  "name": "@dot-event/project-name",
+  "description": "dot-event operation",
+  "keywords": [
+    "dot-event",
+    "operation"
+  ],
+  "author": "dot-event <oss@dot-event.io>",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dot-event/project-name.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/dot-event/project-name#readme",
   "dependencies": {
     "dot-event": "2.10.0",
     "@dot-event/fs": "1.6.0",

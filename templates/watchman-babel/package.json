@@ -1,22 +1,24 @@
 {
-  "watchman": {
-    "triggers": [
-      {
-        "name": "babel",
-        "expression": [
-          "anyof",
-          [
-            "match",
-            "lib/**/*.js",
-            "wholename"
+  "operations":  {
+    "watchman": {
+      "triggers": [
+        {
+          "name": "babel",
+          "expression": [
+            "anyof",
+            [
+              "match",
+              "lib/**/*.js",
+              "wholename"
+            ]
+          ],
+          "command": [
+            "npm",
+            "run",
+            "build"
           ]
-        ],
-        "command": [
-          "npm",
-          "run",
-          "build"
-        ]
-      }
-    ]
+        }
+      ]
+    }
   }
 }

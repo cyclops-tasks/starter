@@ -61,7 +61,7 @@ test("starts a new project", async () => {
     action: "writeFile",
     body:
       // prettier-ignore
-      "{\n  \"name\": \"fixture\",\n  \"version\": \"0.0.1\",\n  \"description\": \"\",\n  \"keywords\": [\n    \"\"\n  ],\n  \"author\": \" <>\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+ssh://git@github.com//fixture.git\"\n  },\n  \"license\": \"MIT\",\n  \"homepage\": \"https://github.com//fixture#readme\"\n}\n",
+      "{\n  \"name\": \"fixture\",\n  \"version\": \"0.0.1\",\n  \"description\": \"\",\n  \"keywords\": [\n    \"\"\n  ],\n  \"author\": \" <>\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+ssh://git@github.com//fixture.git\"\n  },\n  \"license\": \"MIT\",\n  \"homepage\": \"https://github.com//fixture#readme\",\n  \"operations\": {\n    \"git\": {},\n    \"link\": {},\n    \"starter\": {},\n    \"version\": {}\n  }\n}\n",
     ensure: true,
     path: `${__dirname}/fixture/package.json`,
   })

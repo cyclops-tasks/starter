@@ -11,5 +11,11 @@
     "url": "git+ssh://git@github.com//project-name.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com//project-name#readme"
+  "homepage": "https://github.com//project-name#readme",
+  "operations": {
+    "git": { "test": true },
+    "link": { "test": true },
+    "starter": { "test": true },
+    "version": { "test": true }
+  }
 }
