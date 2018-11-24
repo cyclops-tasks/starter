@@ -3,9 +3,6 @@ import dotStore from "@dot-event/store"
 import dotTask from "@dot-event/task"
 
 import dotStarter from "../dist/starter"
-import { templatesPath } from "../dist/starter/merge"
-
-const cancelActions = ["copy", "writeFile", "writeJson"]
 
 let events, store
 
@@ -16,12 +13,12 @@ beforeEach(async () => {
   dotStarter({ events, store })
   dotTask({ events, store })
 
+  const cancel = ({ event }) => (event.signal.cancel = true)
+
   events.onAny({
-    "before.fs": ({ action, event }) => {
-      if (cancelActions.indexOf(action) > -1) {
-        event.signal.cancel = true
-      }
-    },
+    "before.fsCopy": cancel,
+    "before.fsWriteFile": cancel,
+    "before.fsWriteJson": cancel,
   })
 })
 
@@ -34,31 +31,27 @@ async function run() {
 }
 
 test("starts a new project", async () => {
-  const calls = {}
+  const calls = []
 
-  events.onAny("before.fs", ({ action, event }) => {
-    calls[action] = calls[action] || []
-    calls[action].push(event.args[0])
+  events.onAny("before.fsWriteFile", ({ event }) => {
+    calls.push(event.options)
   })
 
   await run()
 
-  expect(calls.writeFile).toContainEqual({
-    action: "writeFile",
+  expect(calls).toContainEqual({
     body: "dist\nnode_modules\n",
     ensure: true,
     path: `${__dirname}/fixture/.gitignore`,
   })
 
-  expect(calls.writeFile).toContainEqual({
-    action: "writeFile",
+  expect(calls).toContainEqual({
     body: "lib\ntest\n",
     ensure: true,
     path: `${__dirname}/fixture/.npmignore`,
   })
 
-  expect(calls.writeFile).toContainEqual({
-    action: "writeFile",
+  expect(calls).toContainEqual({
     body:
       // prettier-ignore
       "{\n  \"name\": \"fixture\",\n  \"version\": \"0.0.1\",\n  \"description\": \"\",\n  \"keywords\": [\n    \"\"\n  ],\n  \"author\": \" <>\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+ssh://git@github.com//fixture.git\"\n  },\n  \"license\": \"MIT\",\n  \"homepage\": \"https://github.com//fixture#readme\",\n  \"operations\": {\n    \"git\": {},\n    \"link\": {},\n    \"starter\": {},\n    \"version\": {}\n  }\n}\n",
@@ -66,8 +59,7 @@ test("starts a new project", async () => {
     path: `${__dirname}/fixture/package.json`,
   })
 
-  expect(calls.writeFile).toContainEqual({
-    action: "writeFile",
+  expect(calls).toContainEqual({
     body: "# fixture\n",
     ensure: true,
     path: `${__dirname}/fixture/README.md`,

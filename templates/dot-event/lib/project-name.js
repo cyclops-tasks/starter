@@ -31,7 +31,7 @@ export default function(options) {
     ],
 
     projectNameSetup: () =>
-      events.argv("argv", {
+      events.argv({
         alias: {
           a: ["action"],
           d: ["dry"],
