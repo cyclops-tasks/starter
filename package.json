@@ -1,6 +1,6 @@
 {
   "name": "@dot-event/starter",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "dot-event project starter operation",
   "keywords": [
     "dot-event",
@@ -39,12 +39,12 @@
   "dependencies": {
     "@babel/runtime": "7.1.2",
     "deepmerge": "2.2.1",
-    "dot-event": "2.12.0",
-    "@dot-event/fs": "1.11.1",
-    "@dot-event/glob": "2.8.1",
+    "dot-event": "2.12.1",
+    "@dot-event/fs": "1.11.2",
+    "@dot-event/glob": "2.8.2",
     "@dot-event/log": "0.12.0",
-    "@dot-event/store": "6.0.0",
-    "@dot-event/task": "1.11.2",
+    "@dot-event/store": "6.0.1",
+    "@dot-event/task": "1.11.3",
     "inquirer": "6.2.0"
   },
   "devDependencies": {
