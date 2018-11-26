@@ -39,7 +39,7 @@
   "dependencies": {
     "@babel/runtime": "7.1.2",
     "deepmerge": "2.2.1",
-    "dot-event": "2.12.1",
+    "dot-event": "2.12.2",
     "@dot-event/fs": "1.11.2",
     "@dot-event/glob": "2.8.2",
     "@dot-event/log": "0.12.0",
