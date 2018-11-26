@@ -1,24 +1,10 @@
+// Packages
 import dotEvent from "dot-event"
 import dotStore from "@dot-event/store"
 import dotTask from "@dot-event/task"
 
-import projectName from "../dist/project-name"
-
-let events, store
-
-beforeEach(async () => {
-  events = dotEvent()
-  store = dotStore({ events })
-
-  projectName({ events, store })
-  dotTask({ events, store })
-
-  events.onAny({
-    "before.spawn": ({ event }) => {
-      event.signal.cancel = true
-    },
-  })
-})
+// Helpers
+import projectName from "../"
 
 async function run(...argv) {
   await events.task({
@@ -28,15 +14,33 @@ async function run(...argv) {
   })
 }
 
-test("projectName", async () => {
-  const calls = {}
+// Constants
+const cancel = ({ event }) => (event.signal.cancel = true)
 
-  events.onAny("before.fs", ({ action, event }) => {
-    calls[action] = calls[action] || []
-    calls[action].push(event.args[0])
+// Variables
+let events
+
+// Tests
+beforeEach(async () => {
+  events = dotEvent()
+
+  projectName({ events })
+  dotStore({ events })
+  dotTask({ events })
+
+  events.onAny({
+    "before.spawn": cancel,
   })
+})
+
+test("projectName", async () => {
+  const calls = []
+
+  events.onAny("before.fsWriteJson", ({ event }) =>
+    calls.push(event.options)
+  )
 
   await run()
 
-  expect(calls.writeFile).toContainEqual({})
+  expect(calls).toContainEqual({})
 })

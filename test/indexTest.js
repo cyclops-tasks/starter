@@ -1,17 +1,19 @@
+// Packages
 import dotEvent from "dot-event"
-import dotStore from "@dot-event/store"
 import dotTask from "@dot-event/task"
 
-import dotStarter from "../dist/starter"
+// Helpers
+import dotStarter from "../"
 
-let events, store
+// Variables
+let events
 
+// Tests
 beforeEach(async () => {
   events = dotEvent()
-  store = dotStore({ events })
 
-  dotStarter({ events, store })
-  dotTask({ events, store })
+  dotStarter({ events })
+  dotTask({ events })
 
   const cancel = ({ event }) => (event.signal.cancel = true)
 

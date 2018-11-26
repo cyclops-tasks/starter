@@ -1,47 +1,32 @@
 // Packages
+import dotArgv, { argvRelay } from "@dot-event/argv"
 import dotFs from "@dot-event/fs"
 import dotLog from "@dot-event/log"
 import dotSpawn from "@dot-event/spawn"
+import dotStore from "@dot-event/store"
 
 // Helpers
-import { dryMode } from "./project-name/dry"
+import { argv } from "./project-name/argv"
+import { subTask } from "./project-name/sub-task"
 
 // Composer
 export default function(options) {
-  const { events, store } = options
+  const { events } = options
 
   if (events.ops.has("projectName")) {
     return options
   }
 
-  dotFs({ events, store })
-  dotLog({ events, store })
-  dotSpawn({ events, store })
+  dotArgv({ events })
+  dotFs({ events })
+  dotLog({ events })
+  dotSpawn({ events })
+  dotStore({ events })
 
   events.onAny({
-    projectName: [
-      dryMode,
-      async options => {
-        const { action = "projectName" } = options
-
-        if (actions[action]) {
-          await actions[action](options)
-        }
-      },
-    ],
-
-    projectNameSetup: () =>
-      events.argv({
-        alias: {
-          a: ["action"],
-          d: ["dry"],
-        },
-      }),
+    projectName: [argv, argvRelay],
+    projectNameSubTask: subTask,
   })
 
   return options
-}
-
-export const actions = {
-  projectName: async () => {},
 }
