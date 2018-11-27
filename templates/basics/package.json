@@ -15,6 +15,7 @@
   "operations": {
     "git": { "test": true },
     "link": { "test": true },
+    "spawn": { "test": true },
     "starter": { "test": true },
     "version": { "test": true }
   }

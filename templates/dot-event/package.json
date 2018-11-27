@@ -12,6 +12,10 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/dot-event/project-name#readme",
+  "main": "dist/project-name.js",
+  "bin": {
+    "dot-project-name": "./bin/dot-project-name"
+  },
   "dependencies": {
     "dot-event": "2.11.2",
     "@dot-event/argv": "2.10.1",
