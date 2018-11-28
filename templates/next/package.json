@@ -6,15 +6,16 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@zeit/next-sass": "1.0.1",
     "express": "4.16.4",
     "next": "7.0.2",
     "next-routes": "1.4.2",
-    "react": "16.5.2",
-    "react-dom": "16.5.2"
+    "react": "16.6.3",
+    "react-dom": "16.6.3"
   },
   "devDependencies": {
     "rimraf": "2.6.2",
-    "webpack-bundle-analyzer": "3.0.2"
+    "webpack-bundle-analyzer": "3.0.3"
   },
   "babel": {
     "env": {

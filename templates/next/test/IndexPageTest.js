@@ -1,4 +1,4 @@
-import { mount } from "@invrs/enzyme"
+import { mount } from "enzyme"
 import React from "react"
 import App from "../pages/IndexPage.js"
 
