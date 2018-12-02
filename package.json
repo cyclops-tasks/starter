@@ -1,6 +1,6 @@
 {
   "name": "@dot-event/starter",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "dot-event project starter operation",
   "keywords": [
     "dot-event",
@@ -45,7 +45,7 @@
     "@dot-event/glob": "2.8.6",
     "@dot-event/log": "0.13.2",
     "@dot-event/store": "6.0.5",
-    "@dot-event/task": "1.11.8",
+    "@dot-event/task": "1.11.9",
     "inquirer": "6.2.0"
   },
   "devDependencies": {
