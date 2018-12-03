@@ -8,6 +8,6 @@ spec:
   type: LoadBalancer
   ports:
   - port: 80
-    targetPort: ${port}
+    targetPort: 3000
   selector:
     app: projectName
