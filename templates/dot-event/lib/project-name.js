@@ -1,8 +1,6 @@
 // Packages
 import dotArgv, { argvRelay } from "@dot-event/argv"
-import dotFs from "@dot-event/fs"
 import dotLog from "@dot-event/log"
-import dotSpawn from "@dot-event/spawn"
 import dotStore from "@dot-event/store"
 
 // Helpers
@@ -18,13 +16,12 @@ export default function(options) {
   }
 
   dotArgv({ events })
-  dotFs({ events })
   dotLog({ events })
-  dotSpawn({ events })
   dotStore({ events })
 
   events.onAny({
-    projectName: [argv, argvRelay],
+    projectName: argvRelay,
+    projectNameSetupOnce: argv,
     projectNameSubTask: subTask,
   })
 

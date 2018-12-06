@@ -1,6 +1,5 @@
 // Packages
 import dotEvent from "dot-event"
-import dotStore from "@dot-event/store"
 import dotTask from "@dot-event/task"
 
 // Helpers
@@ -25,7 +24,6 @@ beforeEach(async () => {
   events = dotEvent()
 
   projectName({ events })
-  dotStore({ events })
   dotTask({ events })
 
   events.onAny({

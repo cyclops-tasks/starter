@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: projectName
-        image: gcr.io/${project}/projectName:${cluster}
+        image: gcr.io/${project}/projectName:${clusterId}
         imagePullPolicy: Always
         env:
         - name: PSQL_URL
