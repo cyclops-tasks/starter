@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: project-name-redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: project-name-redis
+        role: master
+        tier: backend
+    spec:
+      containers:
+      - name: master
+        image: launcher.gcr.io/google/redis3
+        ports:
+        - containerPort: 6379
+        volumeMounts:
+        - name: project-name-redis
+          mountPath: /data
+          subPath: project-name-redis
+      volumes:
+      - name: project-name-redis
+        persistentVolumeClaim:
+          claimName: ${cluster}-project-name-redis

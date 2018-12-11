@@ -1,29 +1,18 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: projectName
+  name: project-name
   labels:
-    app: projectName
+    app: project-name
 spec:
   replicas: 2
   template:
     metadata:
       labels:
-        app: projectName
+        app: project-name
         tier: app
     spec:
       containers:
-      - name: projectName
-        image: gcr.io/${project}/projectName:${clusterId}
+      - name: project-name
+        image: gcr.io/${project}/project-name:${cluster}
         imagePullPolicy: Always
-        env:
-        - name: PSQL_URL
-          valueFrom:
-            secretKeyRef:
-              name: projectName
-              key: PSQL_URL
-        - name: REDIS_URL
-          valueFrom:
-            secretKeyRef:
-              name: projectName
-              key: REDIS_URL
