@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: project-name-redis
+  name: project-name
   labels:
-    app: project-name-redis
+    app: project-name
     role: master
     tier: backend
 spec:
@@ -11,6 +11,6 @@ spec:
   - port: 6379
     targetPort: 6379
   selector:
-    app: project-name-redis
+    app: project-name
     role: master
     tier: backend

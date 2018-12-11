@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: ${cluster}-project-name-redis
+  name: ${cluster}-project-name
 spec:
   accessModes:
   - ReadWriteOnce

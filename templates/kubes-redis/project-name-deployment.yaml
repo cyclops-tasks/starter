@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: project-name-redis
+  name: project-name
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: project-name-redis
+        app: project-name
         role: master
         tier: backend
     spec:
@@ -17,10 +17,10 @@ spec:
         ports:
         - containerPort: 6379
         volumeMounts:
-        - name: project-name-redis
+        - name: project-name
           mountPath: /data
-          subPath: project-name-redis
+          subPath: project-name
       volumes:
-      - name: project-name-redis
+      - name: project-name
         persistentVolumeClaim:
-          claimName: ${cluster}-project-name-redis
+          claimName: ${cluster}-project-name
