@@ -41,7 +41,7 @@
     "@babel/runtime": "7.2.0",
     "deepmerge": "3.0.0",
     "dot-event": "2.12.8",
-    "@dot-event/fs": "1.11.19",
+    "@dot-event/fs": "1.11.20",
     "@dot-event/glob": "2.8.8",
     "@dot-event/log": "0.13.5",
     "@dot-event/store": "6.0.7",
