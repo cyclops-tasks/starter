@@ -43,7 +43,7 @@
     "dot-event": "2.12.8",
     "@dot-event/fs": "1.11.16",
     "@dot-event/glob": "2.8.8",
-    "@dot-event/log": "0.13.4",
+    "@dot-event/log": "0.13.5",
     "@dot-event/store": "6.0.7",
     "@dot-event/task": "1.11.15",
     "inquirer": "6.2.0"
