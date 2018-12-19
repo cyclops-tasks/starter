@@ -45,7 +45,7 @@
     "@dot-event/glob": "2.8.8",
     "@dot-event/log": "0.13.5",
     "@dot-event/store": "6.0.7",
-    "@dot-event/task": "1.11.20",
+    "@dot-event/task": "1.11.21",
     "inquirer": "6.2.0"
   },
   "devDependencies": {
