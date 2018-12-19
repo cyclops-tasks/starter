@@ -19,7 +19,6 @@ spec:
         volumeMounts:
         - name: project-name
           mountPath: /data
-          subPath: project-name
       volumes:
       - name: project-name
         persistentVolumeClaim:
