@@ -5,7 +5,7 @@
   },
   "jest": {
     "setupFiles": [
-      "<rootDir>/test/setup.js"
+      "<rootDir>/testSetup.js"
     ]
   }
 }
