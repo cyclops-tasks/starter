@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import * as lib from "../dist"
 
 test("export something", () => {

@@ -5,6 +5,6 @@
     "watch": "rimraf dist; node-sass lib -r --follow --watch --output dist --source-maps"
   },
   "devDependencies": {
-    "node-sass": "4.10.0"
+    "node-sass": "4.11.0"
   }
 }

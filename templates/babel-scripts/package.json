@@ -6,6 +6,6 @@
     "watch": "rimraf dist; babel lib --watch --out-dir dist --source-maps"
   },
   "devDependencies": {
-    "rimraf": "2.6.2"
+    "rimraf": "2.6.3"
   }
 }

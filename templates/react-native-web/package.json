@@ -1,9 +1,9 @@
 {
   "dependencies": {
-    "react-native-web": "0.9.8"
+    "react-native-web": "0.10.0-alpha.1"
   },
   "devDependencies": {
-    "babel-plugin-react-native-web": "0.9.8"
+    "babel-plugin-react-native-web": "0.9.13"
   },
   "babel": {
     "plugins": [

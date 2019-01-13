@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "eslint-plugin-react": "7.12.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:prettier/recommended",
+      "plugin:react/recommended"
+    ],
+    "rules": {
+      "react/display-name": "off",
+      "react/no-find-dom-node": "off",
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off"
+    }
+  }
+}

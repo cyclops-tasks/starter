@@ -1,9 +1,8 @@
 {
   "name": "@dot-event/project-name",
-  "description": "dot-event operation",
+  "description": "dot-event",
   "keywords": [
-    "dot-event",
-    "operation"
+    "dot-event"
   ],
   "author": "dot-event <oss@dot-event.io>",
   "repository": {
@@ -12,15 +11,9 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/dot-event/project-name#readme",
-  "main": "dist/project-name.js",
-  "bin": {
-    "dot-project-name": "./bin/dot-project-name"
-  },
-  "dependencies": {
-    "dot-event": "2.12.6",
-    "@dot-event/argv": "2.10.6",
-    "@dot-event/log": "0.13.2",
-    "@dot-event/store": "6.0.5",
-    "@dot-event/task": "1.11.12"
+  "main": "projectName.js",
+  "devDependencies": {
+    "dot-event": "next2",
+    "@dot-event/log": "next2"
   }
 }

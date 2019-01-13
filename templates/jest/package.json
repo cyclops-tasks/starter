@@ -1,14 +1,10 @@
 {
   "devDependencies": {
-    "babel-core": "7.0.0-bridge.0",
     "jest": "23.6.0"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ],
     "testMatch": [
-      "<rootDir>/test/**/*Test.js"
+      "<rootDir>/**/*Test.js"
     ]
   }
 }

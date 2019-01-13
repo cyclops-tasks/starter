@@ -1,0 +1,23 @@
+{
+  "devDependencies": {
+    "babel-eslint": "10.0.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+      },
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    }
+  },
+  "prettier": {
+    "printWidth": 60,
+    "semi": false,
+    "trailingComma": "es5"
+  }
+}
